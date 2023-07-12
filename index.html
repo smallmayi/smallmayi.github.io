@@ -30,7 +30,6 @@
 
 
 
-
 <script>var GLOBALCONFIG = {"root":"/","runtime":"2021-12-12 00:00:00","lazyload":{"enable":false,"error":"/img/acrylic.png"},"hightlight":{"enable":false,"limit":200},"lightbox":true,"randomlinks":false,"lang":{"theme":{},"copy":{},"time":{},"sayhello":{},"search":{}},"covercolor":false,"comment":{"enable":false,"twikooUrl":null}};</script><script id="site-config">var PAGECONFIG = {"is_home":true,"is_post":false,"is_page":false,"page":false};</script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body id="body">
@@ -65,8 +64,8 @@
                     <ul class="card-archive-list">
     
      
-        <li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023-07/')" data-pjax-state=""><span
-            class="card-archive-list-date">2023-07</span>
+        <li class="card-archive-list-item"><a class="card-archive-list-link" onclick="pjax.loadUrl('/archives/2023/07/')" data-pjax-state=""><span
+            class="card-archive-list-date">2023/07</span>
             <div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span
                     class="card-archive-list-count-unit">篇</span></div>
             </a>
@@ -198,6 +197,113 @@
 </header>
                 <div id="home_top">
     
+    
+        <div class="recent-top-post-group" id="recent-top-post-group">
+    <div class="recent-post-top" id="recent-post-top">
+        <div id="bannerGroup">
+            <div id="banners">
+                <div class="banners-title">
+    <div class="banners-title-big">
+        分享设计<br>与科技生活
+    </div>
+    <div class="banners-title-small">
+        blog.zhheo.com
+    </div>
+</div>
+<div class="tags-group-all">
+    <div class="tags-group-wrapper">
+        
+            
+                
+                
+                    <div class="tags-group-icon-pair">
+                    
+                    <div class="tags-group-icon" style="background: #989bf8">
+                        <img src="/img/icon/ae.png" title="AE">
+                    </div>
+                
+                    </div>
+                
+               
+        
+            
+                
+                
+                    <div class="tags-group-icon-pair">
+                    
+                    <div class="tags-group-icon" style="background: #989bf8">
+                        <img src="/img/icon/ae.png" title="AE">
+                    </div>
+                
+                    </div>
+                
+               
+            
+    </div>
+</div>
+<a id="banner-hover" onclick="toRandomPost()" data-pjax-state="">
+    <span class="bannerText">随便逛逛</span>
+    <i class="fas fa-arrow-right banner-righticon"></i>
+</a>
+            </div>
+            <div class="categoryGroup">
+                <div class="categoryItem" style="box-shadow: var(--heo-shadow-blue);"><a class="categoryButton CB1 bikan"
+        href="/tags/Acrylic/">
+        <span class="categoryButtonText">Acrylic</span>
+        <i class="fas fa-dove"></i>
+    </a>
+</div>
+<div class="categoryItem" style="box-shadow: var(--heo-shadow-red);">
+    <a class="categoryButton remen" href="/tags/%E7%83%AD%E9%97%A8/">
+        <span class="categoryButtonText">热门文章</span>
+        <i class="fas fa-burn"></i>
+    </a>
+</div>
+<div class="categoryItem" style="box-shadow: var(--heo-shadow-green);">
+    <a class="categoryButton shiyong"
+        href="/tags/%E6%95%99%E7%A8%8B/">
+        <span class="categoryButtonText">实用教程</span>
+        <i class="fas fa-book"></i>
+    </a>
+</div>
+            </div>
+        </div>
+        <div class="topGroup">
+            <style type="text/css">
+    .topGroup .todayCard::after {
+        box-shadow: 0 -109px 133px -9px #006a73 inset;
+    }
+
+    .todayCard-title,
+    .todayCard-tips,
+    .topGroup .banner-button {
+        color: #ffffff;
+    }
+
+    .topGroup .todayCard {
+        background: #006a73;
+    }
+</style>
+
+<div class="todayCard" id="todayCard" onclick="pjax.loadUrl('/')"
+    style="z-index: 1;">
+    <div class="todayCard-info">
+        <div class="todayCard-tips">置顶文章</div>
+        <div class="todayCard-title">让Acrylic成为您的Hexo主题</div>
+    </div>
+    <div class="todayCard-cover nolazyload"
+        style="background: url('/img/acrylic.png') no-repeat center /cover">
+    </div>
+    <div class="banner-button-group"><a class="banner-button"
+            onclick="window.event.cancelBubble=true;acrylic.hideTodayCard();">
+            <i class="fas fa-circle-plus"></i>
+            <span class="banner-button-text">更多推荐</span>
+        </a>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
     
 </div>
 <main class="layout" id="content-inner">
@@ -395,14 +501,15 @@
                 <div class="copyright">©2021 - 2023 By 
                     <a class="footer-section-link" href="/" rel="external nofollow">John Doe</a>
                     <a class="footer-section-link" href="https://github.com/hexo-theme-Acrylic/Hexo-Theme-Acrylic-Next" rel="external nofollow" target="_blank"> Theme By Acrylic-Next</a>
+                    <a class="footer-section-link" href="" rel="external nofollow" target="_blank"></a>
                 </div>
             </div>
         </div>
         <div class="footer-section-right">
-            <a class="footer-section-link" href="/rss/">订阅</a>
+            <a class="footer-section-link" href="">订阅</a>
             
             <a class="footer-section-link cc" target="_blank" href="https://creativecommons.org/licenses/by/4.0/" title="cc协议">
-                <i class="fa-solid fa-closed-captioning"></i>
+                <i class="fas fa-closed-captioning"></i>
             </a>
         </div>
     </div>
@@ -437,6 +544,7 @@
 <script src="/js/extend/covercolor/web.js"></script>
 
         
+
 
 
     <script>
