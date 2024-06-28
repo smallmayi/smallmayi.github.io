@@ -619,7 +619,7 @@ copy:
 # 懒加载
 # lazyload
 lazyload:
-  enable: false
+  enable: true
   field: site # post, site
   # 加载中显示图片
   # Loading display image
@@ -685,7 +685,7 @@ OpenGraph:
 # word count
 # warning：开启前需要安装字数统计插件
 # warning: You need to install the word count plugin before turning it on
-wordcount: false
+wordcount: true
 
 # 访问统计
 # access statistics
