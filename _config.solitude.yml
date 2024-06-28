@@ -689,7 +689,7 @@ wordcount: true
 
 # 访问统计
 # access statistics
-busuanzi: false
+busuanzi: true
 busuanzi_use: 0 # 0: 原版 / 1: 青秸(other: 其它自定義的busuanzi平台)
 
 # 搜索
@@ -765,7 +765,7 @@ katex:
 # comment
 # getting start: https://solitude.js.org/comments/comment
 comment:
-  use: # waline, twikoo, valine, artalk
+  use: valine # waline, twikoo, valine, artalk
   commentBarrage: false # 热评开关 / Hot comment switch
   lazyload: false # 懒加载
   count: false # 评论数展示
@@ -794,8 +794,8 @@ waline: # https://waline.js.org/
 # valine 配置信息
 # valine settings
 valine:
-  appId: # leancloud application app id
-  appKey: # leancloud application app key
+  appId: Cjzl24lbxPEtps1FeSOqe9yy-MdYXbMMI # leancloud application app id
+  appKey: NLVX6AkJqtePL9n4FkJMpz1m # leancloud application app key
   serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
   avatar: # https://valine.js.org/avatar.html
   visitor: false
