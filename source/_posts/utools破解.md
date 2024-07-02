@@ -13,3 +13,6 @@ title: utools5.0破解
 2.禁止自动更新
 
 修改`C:\Users\用户名\AppData\Local\Programs\utools\resources`下的`app-update.yml`文件
+
+可以将原`url`修改为` www.baidu.com `
+
