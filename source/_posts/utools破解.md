@@ -3,9 +3,11 @@ title: utools5.0破解
 ---
 1.破解包（适用于5.x）
 
+包含`utools5.1.0`和破解包`app.asar`
+
 ```yaml
-链接：https://pan.quark.cn/s/890088251351
-提取码：DMvt
+链接：https://pan.quark.cn/s/629840b083e2
+提取码：Uude
 ```
 
 替换c盘 `C:\Users\用户名\AppData\Local\Programs\utools\resources`下的相应文件`app.asar`
