@@ -1,5 +1,6 @@
 ---
 title: utools5.0破解
+cover: https://webstatic.mihoyo.com/upload/op-public/2023/07/10/e2a0871c3d9b28e90f95771a9c8ea22f_4102664821097420347.png
 ---
 1.破解包（适用于5.x）
 
