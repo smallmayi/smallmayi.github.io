@@ -43,7 +43,7 @@ git push origin source
 
 5）查看仓库
 
-![image-20240619165050143](D:\TyporaNote\blog\image-20240619165050143.png)
+![image-20240619165050143](images\image-20240619165050143.png)
 
 可以看到已成功提交，且已经忽略生成的public文件夹。
 
@@ -55,13 +55,21 @@ git push origin source
 
 https://github.com/settings/tokens
 
-![image-20240621164611994](D:\TyporaNote\blog\image-20240621164611994.png)
+![image-20240621164611994](images\image-20240621164611994.png)
 
 选择不过期，勾选repo和workflow
 
 生成的token记得复制保存下来，只能看这一次。
 
-1、去Github的自己仓库点击Actions，新建一个workflow工作流
+2）添加自定token
+
+![image-20240711154004113](images\image-20240711154004113.png)
+
+在setting下添加一个自定义secret,名称自定义，内容为之前的token。
+
+3）去Github的自己仓库点击Actions，新建一个workflow工作流。
+
+里面的依赖等根据情况配置
 
 ```yaml
 name: Deploy Hexo to GitHub Pages
@@ -114,3 +122,6 @@ jobs:
           git push origin HEAD:main -f
 ```
 
+
+
+现在就配置好了，后续只需要在`_post`添加文章上传就行，会自动部署生成文件。
