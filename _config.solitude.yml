@@ -619,7 +619,7 @@ copy:
 # 懒加载
 # lazyload
 lazyload:
-  enable: true
+  enable: false
   field: site # post, site
   # 加载中显示图片
   # Loading display image
