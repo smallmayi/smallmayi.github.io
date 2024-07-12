@@ -25,12 +25,14 @@ title: hexo自动化部署
 
 3)添加`.gitignore`文件，只保留源码，其他不推送
 
+```
 `.DS_STORE`
 `db.json`
 `*.log
 node_modules/
 public/
 .deploy*/`
+```
 
 3)git add .
 4)提交远程source分支
@@ -63,7 +65,7 @@ https://github.com/settings/tokens
 
 2）添加自定token
 
-![image-20240711154004113](images\image-20240711154004113.png)
+![image-20240711154004113](images/image-20240711154004113.png)
 
 在setting下添加一个自定义secret,名称自定义，内容为之前的token。
 
