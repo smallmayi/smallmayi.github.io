@@ -92,25 +92,25 @@ hometop:
     # 轮播icon
     # Carousel icon
     # tip: 76x76 size
-    icon:
-     HTML: # 名字 / Name
-       img: https://7.isyangs.cn/34/65f2e42921677-34.png # 图片 / Image
-       color: "#e9572b" # 背景色 / Background color
-     JS:
-       img: https://7.isyangs.cn/34/65f2e43ceddda-34.png
-       color: "#f7cb4f"
-     Docker:
-      img: https://7.isyangs.cn/34/65f2e45462045-34.png
-      color: "#57b6e6"
-     Flutter:
-      img: https://7.isyangs.cn/34/65f2e47acbe98-34.png
-      color: "#ffffff"
-     WebPack:
-      img: https://7.isyangs.cn/34/65f2e488bf8ed-34.png
-      color: "#2e3a41"
-     Git:
-      img: https://7.isyangs.cn/34/65f2e499066fa-34.png
-      color: "#df5b40"
+    # icon:
+     # HTML: # 名字 / Name
+       # img: https://7.isyangs.cn/34/65f2e42921677-34.png # 图片 / Image
+       # color: "#e9572b" # 背景色 / Background color
+     # JS:
+       # img: https://7.isyangs.cn/34/65f2e43ceddda-34.png
+       # color: "#f7cb4f"
+     # Docker:
+      # img: https://7.isyangs.cn/34/65f2e45462045-34.png
+      # color: "#57b6e6"
+     # Flutter:
+      # img: https://7.isyangs.cn/34/65f2e47acbe98-34.png
+      # color: "#ffffff"
+     # WebPack:
+      # img: https://7.isyangs.cn/34/65f2e488bf8ed-34.png
+      # color: "#2e3a41"
+     # Git:
+      # img: https://7.isyangs.cn/34/65f2e499066fa-34.png
+      # color: "#df5b40"
 
   # 左下跳转按钮
   # Banner lower left jump button

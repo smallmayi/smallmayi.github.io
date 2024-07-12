@@ -43,7 +43,7 @@ git push origin source
 
 5）查看仓库
 
-![image-20240619165050143](images\image-20240619165050143.png)
+![image-20240619165050143](..\images\image-20240619165050143.png)
 
 可以看到已成功提交，且已经忽略生成的public文件夹。
 
@@ -55,7 +55,7 @@ git push origin source
 
 https://github.com/settings/tokens
 
-![image-20240621164611994](images\image-20240621164611994.png)
+![image-20240621164611994](..\images\image-20240621164611994.png)
 
 选择不过期，勾选repo和workflow
 
@@ -63,7 +63,7 @@ https://github.com/settings/tokens
 
 2）添加自定token
 
-![image-20240711154004113](images\image-20240711154004113.png)
+![image-20240711154004113](..\images\image-20240711154004113.png)
 
 在setting下添加一个自定义secret,名称自定义，内容为之前的token。
 
