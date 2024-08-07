@@ -9,9 +9,8 @@ cover: https://webstatic.mihoyo.com/upload/op-public/2023/07/10/e2a0871c3d9b28e9
 
 包含`utools5.1.0`和破解包`app.asar`
 
-```yaml
-链接：https://pan.quark.cn/s/629840b083e2
-提取码：Uude
+```html
+https://www.123pan.com/s/Fj3aTd-8KIUh.html?提取码:sJrM
 ```
 
 替换c盘 `C:\Users\用户名\AppData\Local\Programs\utools\resources`下的相应文件`app.asar`
