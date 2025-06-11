@@ -3,7 +3,7 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - source  # 当推送到 source 分支时触发
+      - source
 
 jobs:
   build:
@@ -11,20 +11,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # 使用 v3 版本
         with:
-          submodules: false  # 禁用子模块检查
-          
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          submodules: false
+          fetch-depth: 0  # 获取完整 Git 历史
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
@@ -36,22 +29,20 @@ jobs:
           npm install hexo-deployer-git --save
           npm install hexo-cli -g
           npm install hexo-renderer-pug hexo-renderer-stylus --save
-          npm i --save hexo-wordcount
+
       - name: Clean and Generate Static Files
         run: |
           hexo clean
           hexo generate
+
       - name: Configure Git
         run: |
           git config --global user.name 'smallmayi'
           git config --global user.email '1591698916@qq.com'
+
       - name: Deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.BLOGAUTO }}
         run: |
-          cd public/
-          git init
-          git add -A
-          git commit -m "update by workflows"
-          git remote add origin https://${{ secrets.BLOGAUTO }}@github.com/smallmayi/smallmayi.github.io.git
-          git push origin HEAD:main -f
+          # 直接使用 hexo-deployer-git 部署
+          hexo deploy
