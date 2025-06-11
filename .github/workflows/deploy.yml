@@ -3,18 +3,14 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - source
+      - source  # 触发分支
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3  # 使用 v3 版本
-        with:
-          submodules: false
-          fetch-depth: 0  # 获取完整 Git 历史
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,27 +18,20 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Install Hexo Git Deployer
         run: |
-          npm install hexo-deployer-git --save
+          npm install
           npm install hexo-cli -g
-          npm install hexo-renderer-pug hexo-renderer-stylus --save
+          npm install hexo-deployer-git --save
 
-      - name: Clean and Generate Static Files
+      - name: Generate Static Files
         run: |
           hexo clean
           hexo generate
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'smallmayi'
-          git config --global user.email '1591698916@qq.com'
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         env:
-          GH_TOKEN: ${{ secrets.BLOGAUTO }}
+          GH_TOKEN: ${{ secrets.BLOGAUTO }}  # Token 需有 repo 权限
         run: |
-          # 直接使用 hexo-deployer-git 部署
+          git config --global user.name "smallmayi"
+          git config --global user.email "1591698916@qq.com"
           hexo deploy
