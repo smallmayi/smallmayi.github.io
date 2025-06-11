@@ -7,12 +7,14 @@
   margin-left -15rem
   padding 1rem
   width 30rem
+  flex-direction column
   box-shadow var(--efu-shadow-lightblack)
   background var(--efu-card-bg)
   border var(--style-border)
   transition 0.3s
   border-radius 8px
   animation slide-in .6s ease 0s 1 normal none running
+  gap: 16px
 
   &:hover
     border var(--style-border-hover)
@@ -31,32 +33,21 @@
   .algolia-navbar
     display flex
     align-items center
-    margin-bottom 8px
-
-  .algolia-tips
-    color var(--efu-secondtext)
-    right 0
-    margin-left auto
-    opacity .8
 
   .search-close-button
-    color var(--efu-secondtext)
+    margin-left: 4px
+    padding 4px
+    color var(--efu-gray)
     font-size 1.4em
     line-height 1
     cursor pointer
-    padding 4px
-    border-radius 50px
-    margin-left 4px
-    transition .3s
+    transition color .2s ease-in-out 0s
 
     &:hover
       color var(--efu-main)
 
   .algolia-tips-text
     margin-left .4rem
-
-  #algolia-input-panel
-    margin-bottom 8px
 
   .search-box, .ais-SearchBox
     padding-top 8px
@@ -83,7 +74,6 @@
       visibility hidden
 
   #search-results
-    padding-top 8px
     max-height calc(80vh - 130px)
     overflow-y auto
 
@@ -92,9 +82,7 @@
 
   .ais-Hits-list
     padding 0
-
-  .ais-Hits-item
-    margin 10px 0
+    margin 0
 
   .algolia-hit-item-content
     margin 0
@@ -110,17 +98,21 @@
     overflow hidden
     font-weight bold
 
+    &:hover
+      color var(--efu-main)
+  
+  .ais-Stats-text
+    font-size 12px
+
   mark
     color var(--efu-theme)
     font-style normal
     background var(--efu-card-bg)
 
   .ais-Hits--empty
-    text-align center
     font-weight 600
 
   .ais-Pagination-list
-    margin 0.2rem 0 0
     padding 0
     text-align center
 
@@ -140,15 +132,13 @@
 
   .search-dialog__title
     font-weight 700
-    padding 0 0 0.7rem
     color var(--efu-main)
     font-size 1.4em
     line-height 1
 
   #algolia-tips
-    padding-top 12px
     color var(--efu-secondtext)
-    right 0
+    width 100%
     margin auto
 
     .algolia-tips-text
@@ -179,3 +169,14 @@
 
 .ais-Pagination-item--selected a
   background var(--efu-main)
+
+.algolia-tips
+    color: var(--efu-secondtext);
+    margin-left: auto;
+    opacity: .8;
+
+    i 
+      font-size: 18px
+
+#algolia-search .search-dialog .ais-SearchBox-input::placeholder
+    opacity: .6

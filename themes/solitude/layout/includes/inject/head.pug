@@ -2,10 +2,10 @@ each item in theme.verify_site || []
     meta(name=item.name, content=item.content)
 
 link(rel="canonical" href=urlNoIndex())
-link(rel="stylesheet", href=url_for(theme.cdn.solitude_css))
+link(rel="stylesheet", href=url_for(theme.cdn.fontawesome))
 
 // aplayer
-if theme.capsule.enable || theme.music.enable
+if theme.capsule.enable || theme.music.enable || theme.says.enable
     link(rel="stylesheet", href=url_for(theme.cdn.aplayer_css))
 
 // swiper
@@ -48,3 +48,9 @@ if theme.extends.head
         != item
 
 !=fragment_cache('injectHeadJs', function(){return inject_head_js()})
+
+// theme
+include ../head/mode
+
+if theme.page.echart
+    script(src=url_for(theme.cdn.echarts))

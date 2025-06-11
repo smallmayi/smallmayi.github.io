@@ -4,7 +4,10 @@ div.console_recentcomments
   gap 12px
   min-height 100px
   width 100%
-  margin-top .5rem
+
+  +maxWidth1300()
+    overflow-y scroll
+    scrollbar-width none
 
 .comment-card
   position relative
@@ -16,15 +19,16 @@ div.console_recentcomments
   cursor pointer
   transition .3s
   overflow hidden
-  gap 8px
+  gap .5rem
   display flex
   flex-direction column
 
   .console-card &
     width calc(100% / 2 - 8px)
 
-  +maxWidth900()
-    width calc(100% / 2 - 6px)
+  +maxWidth1300()
+    min-width 100%
+    height calc(100% / 3 - 8px)
 
   +maxWidth768()
     width 100%

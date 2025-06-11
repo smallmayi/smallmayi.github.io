@@ -10,6 +10,7 @@
     .post-tools-left
       white-space: nowrap
       display: flex
+      gap: .5rem
       text-overflow: ellipsis
       justify-content: center
       flex-wrap: wrap
@@ -58,7 +59,8 @@
           border-radius: 8px
           line-height: 39px
           box-shadow: var(--efu-shadow-red)
-          display: inline-block
+          display: flex
+          align-items: center
           cursor: pointer
           transition: all .4s ease 0s
 
@@ -180,8 +182,9 @@
         height: 40px
         line-height: 39px
         box-shadow: var(--efu-shadow-green)
+        display: flex
+        align-items: center
         border-radius: 8px
-        margin-left: .5rem
         cursor: pointer
         text-align: center
         transition: .3s
@@ -204,6 +207,8 @@
     justify-content: space-between
     flex-wrap: wrap
     padding 0 2rem
+    +maxWidth768()
+      padding: 0 .5rem
 
     .tag_share
       .post-meta__tag-list

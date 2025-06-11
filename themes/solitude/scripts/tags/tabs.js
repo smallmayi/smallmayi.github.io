@@ -5,57 +5,42 @@
 
 'use strict'
 
-function postTabs (args, content) {
-  const tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g
+function postTabs([name, active], content) {
+  const tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g;
+  const matches = [...content.matchAll(tabBlock)];
+  
+  active = Number(active) || 0;
 
-  args = args.join(' ').split(',')
-  const tabName = args[0]
-  const tabActive = Number(args[1]) || 0
+  const generateTabItems = (matches, name, active) => {
+    return matches.map((match, tabId) => {
+      const [tabCaption = '', tabIcon = ''] = match[1].split('@');
+      const postContent = hexo.render.renderSync({ text: match[2], engine: 'markdown' }).trim();
+      const tabHref = `${name.toLowerCase().replace(/\s+/g, '-')}-${tabId}`;
+      
+      const iconHtml = tabIcon ? `<i class="${tabIcon.trim()} tab solitude"></i>` : '';
+      const isActive = active === tabId ? ' active' : '';
+      const toTopButton = '<button type="button" class="tab-to-top" aria-label="scroll to top"><i class="solitude fas fa-arrow-up"></i></button>';
+      
+      return {
+        nav: `<li class="tab${isActive}"><button type="button" data-href="#${tabHref}">${iconHtml}${tabCaption.trim() || `${name} ${tabId}`}</button></li>`,
+        content: `<div class="tab-item-content${isActive}" id="${tabHref}">${postContent}${toTopButton}</div>`
+      };
+    });
+  };
 
-  const matches = []
-  let match
-  let tabId = 0
-  let tabNav = ''
-  let tabContent = ''
+  const tabItems = generateTabItems(matches, name, active);
 
-  !tabName && hexo.log.warn('Tabs block must have unique name!')
+  const createTabStructure = (tabItems) => {
+    const tabNav = `<ul class="nav-tabs">${tabItems.map(item => item.nav).join('')}</ul>`;
+    const tabContent = `<div class="tab-contents">${tabItems.map(item => item.content).join('')}</div>`;
+    return { tabNav, tabContent };
+  };
 
-  while ((match = tabBlock.exec(content)) !== null) {
-    matches.push(match[1])
-    matches.push(match[2])
-  }
+  const { tabNav, tabContent } = createTabStructure(tabItems);
 
-  for (let i = 0; i < matches.length; i += 2) {
-    const tabParameters = matches[i].split('@')
-    let postContent = matches[i + 1]
-    let tabCaption = tabParameters[0] || ''
-    let tabIcon = tabParameters[1] || ''
-    let tabHref = ''
-
-    postContent = hexo.render.renderSync({ text: postContent, engine: 'markdown' }).trim()
-
-    tabId += 1
-    tabHref = (tabName + ' ' + tabId).toLowerCase().split(' ').join('-');
-
-    ((tabCaption.length === 0) && (tabIcon.length === 0)) && (tabCaption = tabName + ' ' + tabId)
-
-    const isOnlyicon = tabIcon.length > 0 && tabCaption.length === 0 ? ' style="text-align: center;"' : ''
-    const icon = tabIcon.trim()
-    tabIcon.length > 0 && (tabIcon = `<i ${isOnlyicon} class="tab solitude ${icon}"></i>`)
-
-    const toTop = '<button type="button" class="tab-to-top" aria-label="scroll to top"><i class="solitude st-arrow-up-line"></i></button>'
-
-    const isActive = (tabActive > 0 && tabActive === tabId) || (tabActive === 0 && tabId === 1) ? ' active' : ''
-    tabNav += `<li class="tab${isActive}"><button type="button" data-href="#${tabHref}">${tabIcon + tabCaption.trim()}</button></li>`
-    tabContent += `<div class="tab-item-content${isActive}" id="${tabHref}">${postContent + toTop}</div>`
-  }
-
-  tabNav = `<ul class="nav-tabs">${tabNav}</ul>`
-  tabContent = `<div class="tab-contents">${tabContent}</div>`
-
-  return `<div class="tabs" id="${tabName.toLowerCase().split(' ').join('-')}">${tabNav + tabContent}</div>`
+  return `<div class="tabs" id="${name.toLowerCase().replace(/\s+/g, '-')}">${tabNav}${tabContent}</div>`;
 }
 
-hexo.extend.tag.register('tabs', postTabs, { ends: true })
-hexo.extend.tag.register('subtabs', postTabs, { ends: true })
-hexo.extend.tag.register('subsubtabs', postTabs, { ends: true })
+hexo.extend.tag.register('tabs', postTabs, { ends: true });
+hexo.extend.tag.register('subtabs', postTabs, { ends: true });
+hexo.extend.tag.register('subsubtabs', postTabs, { ends: true });

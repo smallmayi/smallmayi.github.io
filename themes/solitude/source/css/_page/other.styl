@@ -135,6 +135,11 @@ div#banners
       font-weight 700
       box-shadow var(--efu-shadow-blackdeep)
 
+      +maxWidth768()
+        .flink &
+          width 70px
+          height 70px
+
       &:nth-child(even)
         margin-top 1rem
         transform translate(-60px)
@@ -151,6 +156,7 @@ div#banners
 
   +maxWidth768()
     margin-top 0
+    flex-direction column
 
   .author-content-item
     +maxWidth1300()
@@ -165,9 +171,10 @@ div#banners
   color var(--efu-white)
   overflow hidden
   margin-top 0
+  margin-bottom: 12px
 
 .author-content-item
-  width 49.5%
+  flex 4
   border-radius 12px
   background var(--efu-card-bg)
   border var(--style-border-always)
@@ -207,6 +214,7 @@ div#banners
   .card-content
     position absolute
     width 100%
+    z-index 2
     height 100%
     top 0
     left 0

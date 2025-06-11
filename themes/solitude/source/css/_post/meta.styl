@@ -114,7 +114,7 @@
         overflow hidden
         margin 0 -20% 0 auto
         transform rotate(10deg) translateY(-8%) scale(1.8)
-        filter blur(10px)
+        filter blur(30px)
         opacity 0
 
         &.loaded
@@ -206,7 +206,7 @@
         transition all .3s ease-out 0s
 
       i
-        font-size 16px
+        font-size 14px
         margin-right 4px
 
       > div
@@ -241,7 +241,6 @@
           margin 0 1rem 0 0
 
         .post-meta-pv
-          margin-right 8px
           padding 0 8px
           display flex
           align-items center
@@ -264,7 +263,7 @@
           cursor pointer
           transition .3s
           border-radius 12px
-          padding 8px
+          padding: 8px
 
           &:hover
             opacity 1
@@ -380,7 +379,7 @@
   height auto
   position unset
   padding 1rem 2rem
-  background var(--efu-main)
+  background var(--efu-hovertext)
   border-radius 12px 12px 0 0
   +minWidth768()
     min-height 250px

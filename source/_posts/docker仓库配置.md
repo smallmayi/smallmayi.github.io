@@ -9,12 +9,13 @@ cover:
 
 1.设置mirror
 
-```
-sudo tee /etc/docker/daemon.json <<EOF
+```yaml
 {
-    "registry-mirrors": ["https://dockerhub.icu"]
+  "registry-mirrors": [
+        "https://docker.rainbond.cc"
+  ]
 }
-EOF
+
 ```
 
 2.重启

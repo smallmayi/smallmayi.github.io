@@ -1,82 +1,65 @@
-[简体中文](README.md)丨[繁体中文](README_zh-Hant.md)丨English
+English丨[简体中文](README.md)丨[繁体中文](README_zh-Hant.md)
 
 <div align="center">
 
-   <img src=".github/persona.avif" alt="Solitude logo" height="200">
+<img width="70%" src=".github/screenshot.avif" />
 
-   <h1>Hexo Theme Solitude</h1>
+An elegant Hexo theme that supports lazy loading, PWA, Latex, and multiple comment systems.
 
-   An elegant Hexo theme that supports lazy loading, PWA, Latex, and multiple comment systems.
+Theme design fully authorized by [@Zhang Hong Heo](https://github.com/zhheo)
 
-   Theme design is fully licensed by [@张洪Heo](https://github.com/zhheo).
-  
-<a href="https://polar.sh/everfu"><img src="https://polar.sh/embed/seeks-funding-shield.svg?org=everfu" /></a>
-
-![npm package](https://img.shields.io/npm/v/hexo-theme-solitude?logo=npm)
-![release](https://img.shields.io/github/package-json/v/valor-x/hexo-theme-solitude/master?color=%231ab1ad&label=release)
-![license](https://img.shields.io/github/license/valor-x/hexo-theme-solitude?color=FF5531)
+![npm package](https://img.shields.io/npm/v/hexo-theme-solitude)
+![license](https://img.shields.io/github/license/everfu/hexo-theme-solitude?color=FF5531)
 [![Stars](https://img.shields.io/github/stars/everfu/hexo-theme-solitude)](https://github.com/everfu/hexo-theme-solitude/stargazers)
-[![NPM all downloads](https://img.shields.io/npm/dy/hexo-theme-solitude?color=white)](https://www.npmjs.com/package/hexo-theme-solitude)
+[![NPM all downloads](https://img.shields.io/npm/d18m/hexo-theme-solitude
+)](https://www.npmjs.com/package/hexo-theme-solitude)
 
 ![hexo version](https://img.shields.io/badge/hexo-7.0.0+-blue?logo=hexo&logoColor=white)
-![node version](https://img.shields.io/badge/node-14.0.0-white?logo=node.js&logoColor=white)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/hexo-theme-solitude/)](https://socket.dev/npm/package/hexo-theme-solitude/overview)
+![node version](https://img.shields.io/badge/node-14.0.0+-white?logo=node.js&logoColor=white)
+![JetBrains](https://img.shields.io/badge/jetbrains-support-white?logo=jetbrains)
 
-[![twiter](https://img.shields.io/badge/Twitter-gray?logo=x)](https://twitter.com/efu_oo)
-[![TG](https://img.shields.io/badge/Telegram-gray?logo=Telegram&logoColor=white)](https://t.me/solitudePro)
-
-![JetBrains](https://img.shields.io/badge/jetbrains-support-black?logo=jetbrains)
-![DuoLingo](https://img.shields.io/badge/duolingo-support-black?logo=duolingo&logoColor=white)
-
-[![gitee](https://img.shields.io/badge/Gitee-red?logo=gitee)](https://gitee.com/nsjjd_w/hexo-theme-solitude)
-[![gitlab](https://img.shields.io/badge/GitLab-blue?logo=gitlab)](https://gitlab.com/efu/hexo-theme-solitude)
-
-[Documentation](https://solitude.js.org/)丨[Preview](https://everfu.github.io/Solitude/)
+![page view](https://komarev.com/ghpvc/?username=hexo-theme-solitude&color=blue)
+![jsdelivr](https://img.shields.io/jsdelivr/npm/hd/hexo-theme-solitude
+)
+![npm publish](https://img.shields.io/github/actions/workflow/status/everfu/hexo-theme-solitude/npm-publish.yml)
 
 </div>
 
-![Screenshot](.github/screenshot.avif)
-
 ## Features
 
-- Pjax、LazyLoad、PWA.
-- Comments(Twikoo、Waline、Valine、Artalk、Giscus), Can double comment.
-- ColorMode.
-- Lightbox(medium-zoom、fancybox).
-- Mathematical formulas(Latex).
-- Featured pages: Instant Short Article, My Equipment, Online Tools, Music Gallery, Friend Chain Fish Pond, Photo Album Page, Douban Page, Barrage message page.
-- Article features: AI summary, code highlighting.
+- Page lazy loading (Pjax), image lazy loading (LazyLoad), offline application (PWA)
+- Comments (Twikoo, Waline, Valine, Artalk, Giscus), supports dual comments
+- Day and night switch (ColorMode)
+- Lightbox (medium-zoom, fancybox)
+- Mathematical formulas (Latex)
+- Featured pages: Instant articles, My gear, Online tools, Music hall, Friend links, Album page, Douban page, Bullet screen message page
+- Article features: AI summary, code highlighting
 
-## Todo
+> If you have any questions, please raise an [issue](https://github.com/everfu/hexo-theme-solitude/issues)
 
-- [x] The list of articles is displayed in three columns on the homepage.
-- [x] btns tags plugin.
+## Application
 
-> If you have any questions, please issue an [issue](https://github.com/everfu/hexo-theme-solitude/issues)
+1. Install using the NPM package
 
-## Setup
-
-1. Use the NPM package
       ```bash
       npm i hexo-theme-solitude
       ```
-2. Apply
+
+2. Apply the theme
+
       ```yaml
       theme: solitude
       ```
 
-Check out the [Documentation](https://solitude.js.org/) for more information.
+Visit [Documentation](https://solitude.js.org/zh/) for more information.
 
-## Sponsors
+## Community
 
-[!["Buy Me A Coffee"](https://img.buymeacoffee.com/button-api/?text=Buy&nbsp;Me&nbsp;A&nbsp;Coffee&emoji=%E2%98%95&everfu=ezgif&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/everfu)
-
-<p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/efuo/static/sponsors.svg">
-    <img src='https://cdn.jsdelivr.net/gh/efuo/static/sponsors.svg'/>
-  </a>
-</p>
+[![Discord](https://img.shields.io/discord/1266610921942548553?logo=discord&label=discord&logoColor=white)](https://discord.gg/HZXAnK4Sut)
+[![QQ Group](https://img.shields.io/badge/QQ%20Group-948375336-FFD700?logo=Tencent-QQ&logoColor=white)](https://qm.qq.com/q/mxfomMvJPG)
 
 ## License
 
-[MIT](./LICENSE) License &copy; 2023-PRESENT [Ever Fu](https://github.com/everfu)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvalor-x%2Fhexo-theme-solitude.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvalor-x%2Fhexo-theme-solitude?ref=badge_large)
+
+[MIT](./LICENSE) License &copy; 2023-present [everfu](https://github.com/everfu)

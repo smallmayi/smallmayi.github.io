@@ -46,7 +46,7 @@ nav:
   console: 中控台
 
 home:
-  home: 首页
+  home: 推荐
   sticky: 置顶
   new: 最新
   read: 未读
@@ -96,6 +96,7 @@ search:
   hit: 找到 ${hits} 条结果，用时 ${time} 毫秒
   placeholder: 输入关键词快速查找
   count: 共 <b>${count}</b> 条结果。
+  load: 搜索中...
 
 head:
   noscript: 开启JavaScript才能访问本站哦~
@@ -114,7 +115,7 @@ aside:
   back: 欢迎再次回来，
   sticker: 心情贴纸
   newpost: 最近发布
-  newcomment: 最新评论
+  newcomment: 最近评论
   card:
     posts: '累计文章数:'
     tags: '标签总数:'
@@ -130,6 +131,7 @@ console:
   switch_keyboard: 键盘快捷键
   switch_music: 音乐开关
   archive_unit: 篇
+  archive_all: 全部文章
   recent_comment_more: 最近评论
   newest_comment:
     image: 图片
@@ -140,6 +142,7 @@ console:
 sidebar:
   function: 功能
   darkmode: 显示模式
+  siteinfo: 网站信息
 
 footer:
   description: 来自${title}的文章
@@ -163,9 +166,9 @@ link:
   banner:
     toComment: 申请友链
     random: 随机访问
-  random: 点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：⌈ ${name} ⌋ 
+  random: 点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：⌈ ${name} ⌋
   to: 前往
-  
+
 keyboard:
   title: 博客快捷键
 
@@ -195,6 +198,7 @@ right_menu:
   chs_to_cht: 轉為繁體
   cht_to_chs: 转为简体
   img_error: 此图片无法复制与下载
+  ctrl_original_menu: 按住Ctrl+右键可打开浏览器右键菜单
   barrage:
     open: 显示热评
     close: 关闭热评
@@ -219,7 +223,6 @@ about:
     tj:
       tip: 数据
       title: 访问统计
-      post_tip: 统计信息来自
   personalities:
     tip1: 在
     tip2: 了解更多关于
@@ -227,3 +230,20 @@ about:
 message:
   close: 隐藏弹幕
   open: 显示弹幕
+
+essay:
+  tip0: '- 已展开所有短文 -'
+  tip1: '- 只展示最近 #{count} 条短文 -'
+  link: '链接'
+
+rightside:
+  show:
+    gear: 扩展
+    toc: 目录
+    comment: 评论
+    top: 返回顶部
+    barrage: 弹
+  hide:
+    translate: 简繁转换
+    mode: 显示模式切换
+    aside: 侧边栏

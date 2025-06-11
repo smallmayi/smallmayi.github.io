@@ -57,7 +57,7 @@
     width 40%
     height 100%
 
-    +maxWidth1300()
+    +maxWidth900()
       display none
 
   .console-card-group-right
@@ -68,9 +68,8 @@
     width 60%
     overflow hidden
 
-    +maxWidth1300()
+    +maxWidth900()
       width 100%
-      margin 0
 
   .console-card
     background var(--efu-maskbg)
@@ -79,6 +78,9 @@
     border var(--style-border)
     box-shadow var(--efu-shadow-border)
     padding 40px
+    gap 24px
+    display: flex
+    flex-direction: column
 
   .console-card.tags
     height calc(100% - 172px)
@@ -115,6 +117,7 @@
     line-height 1
     display flex
     align-items center
+    justify-content space-between
 
   .aside-list
     display flex
@@ -130,8 +133,8 @@
     width fit-content
 
     .console-btn-item
-      width 60px
-      height 60px
+      width 80px
+      height 40px
       transition .3s
       cursor pointer
 
@@ -158,7 +161,8 @@
         align-items center
         justify-content center
         color var(--efu-fontcolor)
-        transition all .3s
+        transition .3s
+        box-shadow var(--efu-shadow-border)
 
         i
           font-size 1rem
@@ -179,10 +183,10 @@
 
   .console-card.tags
     .card-tag-cloud
-      margin-top 1.5rem
       display flex
       gap .5rem
       flex-wrap wrap
+      verflow-y: scroll
 
       a
         color var(--efu-fontcolor)
@@ -216,8 +220,9 @@
     max-width 1400px
 
     i
-      font-size 32px
+      font-size 24px
       margin-right 1.5rem
+      padding 6px 8px
       margin-left auto
       line-height 1
       transform rotate(-30deg)
@@ -249,7 +254,7 @@
       gap .5rem
 
       li.card-archive-list-item
-        flex 0 1 24.101%
+        flex 0 1 calc(25% - .375rem)
 
       .card-archive-list-link
         border-radius 8px

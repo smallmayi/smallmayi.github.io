@@ -83,7 +83,8 @@
             empty: _p('search.empty'),
             hit: _p('search.hit'),
             placeholder: _p('search.placeholder'),
-            count: _p('search.count')
+            count: _p('search.count'),
+            loading: _p('search.load'),
         }
     }
 
@@ -114,11 +115,18 @@
                 close: _p('right_menu.barrage.close')
             }
         }
-        if (theme.right_menu.translate.enable) {
-            rightMenu.translate = {
-                translateDelay: theme.right_menu.translate.translateDelay,
-                defaultEncoding: theme.right_menu.translate.defaultEncoding
-            }
+        if (theme.translate.enable) {
+            rightMenu.translate = theme.right_menu.translate
+        }
+        if (theme.right_menu.ctrlOriginalMenu)
+            rightMenu.ctrlOriginalMenu = _p('right_menu.ctrl_original_menu')
+    }
+
+    let translate = false
+    if (theme.translate.enable) {
+        translate = {
+            translateDelay: theme.translate.translateDelay,
+            defaultEncoding: theme.translate.defaultEncoding
         }
     }
 
@@ -166,11 +174,11 @@ script.
         lang: !{JSON.stringify(lang)},
         aside: {
             sayhello: {
-                morning: '!{theme.aside.card.sayhello.morning}',
-                noon: '!{theme.aside.card.sayhello.noon}',
-                afternoon: '!{theme.aside.card.sayhello.afternoon}',
-                night: '!{theme.aside.card.sayhello.night}',
-                goodnight: '!{theme.aside.card.sayhello.goodnight}',
+                morning: "!{theme.aside.card.sayhello.morning}",
+                noon: "!{theme.aside.card.sayhello.noon}",
+                afternoon: "!{theme.aside.card.sayhello.afternoon}",
+                night: "!{theme.aside.card.sayhello.night}",
+                goodnight: "!{theme.aside.card.sayhello.goodnight}",
             },
             sayhello2: [!{sayhello2}],
             sayhello3: {
@@ -185,6 +193,7 @@ script.
         lightbox: '!{ theme.mediumZoom ? "mediumZoom" : (theme.fancybox ? "fancybox" : "null")}',
         post_ai: !{post_ai},
         right_menu: !{rightMenu ? JSON.stringify(rightMenu) : false},
+        translate: !{translate ? JSON.stringify(translate) : false},
         lure: !{lure ? JSON.stringify(lure) : false},
         expire: !{expire ? JSON.stringify(expire) : false},
     };

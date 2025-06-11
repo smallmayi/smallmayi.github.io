@@ -3,7 +3,7 @@
     .comment-headline
       display inline-block
       vertical-align middle
-      font-weight 700
+      font-weight bold
       font-size 20px
 
     #comment-switch
@@ -31,7 +31,7 @@
         background-color #307af6
         vertical-align middle
         cursor pointer
-        transition all .4s ease 0s
+        transition all .4s ease
 
         &::before
           position absolute
@@ -42,7 +42,7 @@
           border-radius 50%
           background-color #fff
           content ""
-          transition all .4s ease 0s
+          transition all .4s ease
 
         &.move
           background-color #ff7242
@@ -55,7 +55,9 @@
 
 #post-comment
   .post &
-    padding 0 2rem
+    padding 0 2rem .5rem
+    +maxWidth768()
+      padding 0 .5rem .5rem
   > div.comment-head
     > div.comment-privacy
       display block
@@ -76,7 +78,7 @@
     color var(--efu-secondtext)
     border-radius 8px
 
-  if hexo-config('comment.use')[1]
+  if hexo-config('comment.use')[1] || ',' in hexo-config('comment.use')
     &.move
       if hexo-config('comment.count')
         .comment-head
@@ -102,7 +104,7 @@
     margin .5rem 0
     position relative
 
-    if hexo-config('comment.use')[1]
+    if hexo-config('comment.use')[1] || ',' in hexo-config('comment.use')
       .count span:last-child
         display none
 
@@ -138,7 +140,7 @@
             content ''
             transition .4s
 
-  if hexo-config('comment.use')[1]
+  if hexo-config('comment.use')[1] || index(hexo-config('comment.use'), ',')
     .comment-wrap
       > div:last-child
         display none

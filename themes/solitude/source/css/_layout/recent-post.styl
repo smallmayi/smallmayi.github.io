@@ -8,18 +8,7 @@
       padding 0
 
 if hexo-config('index_post_list.direction') == "column"
-  #recent-posts
-    position relative
-    +minWidth1300()
-      display flex
-      flex-wrap wrap
-      gap .5rem
-      transition width .3s
-
-    +maxWidth768()
-      padding 0 1rem
-
-    > .recent-post-item
+  .recent-post-item
       box-shadow var(--efu-shadow-light2black)
       display flex
       align-items center
@@ -34,6 +23,8 @@ if hexo-config('index_post_list.direction') == "column"
 
       +maxWidth1300()
         margin-bottom .5rem
+        #tag &:first-child
+          margin-top: 2.5rem
 
       +maxWidth768()
         border-radius 12px
@@ -103,26 +94,18 @@ if hexo-config('index_post_list.direction') == "column"
             border-radius: 12px 12px 0 0
 
       > .recent-post-info
-        height 174px
+        height 100%
         width 100%
+        padding 18px 32px 18px 32px
         cursor pointer
         position relative
-        padding 0
-        display inline-block
+        display flex
         overflow hidden
-
-        .content
-          -webkit-line-clamp 2
-          display -webkit-box
-          overflow hidden
-          -webkit-box-orient vertical
-          padding 5px 32px
-          opacity .8
-          font-size 14px
-          line-height 1.8
-
-          +maxWidth600()
-            -webkit-line-clamp 1
+        flex-direction column
+        gap 16px
+        justify-content space-between
+        +minWidth1300()
+          min-height 165px
 
         span.tags-punctuation
           transition .3s
@@ -133,7 +116,6 @@ if hexo-config('index_post_list.direction') == "column"
         .recent-post-info-top
           position relative
           transition .3s
-          padding 0 32px
           width 100%
 
           .article-title
@@ -151,7 +133,6 @@ if hexo-config('index_post_list.direction') == "column"
 
           .recent-post-info-top-tips
             display flex
-            margin-top 20px
             user-select none
 
             > .sticky-warp
@@ -183,8 +164,10 @@ if hexo-config('index_post_list.direction') == "column"
                 color var(--efu-card-bg)
 
         /.article-meta-wrap
-          position absolute
-          bottom 16px
+          color var(--efu-fontcolor)
+          font-size .7rem
+          user-select none
+          position relative
           transition .3s
           display flex
           flex-direction row
@@ -192,10 +175,7 @@ if hexo-config('index_post_list.direction') == "column"
           justify-content space-between
           width 100%
           left 0
-          padding 0 32px
           white-space nowrap
-          color var(--efu-fontcolor)
-          font-size .7rem
 
           > .article-meta
             margin 0 8px 0 0
@@ -230,6 +210,16 @@ if hexo-config('index_post_list.direction') == "column"
 
           .sticky
             color var(--efu-fontcolor)
+  #recent-posts
+    position relative
+    +minWidth1300()
+      display flex
+      flex-wrap wrap
+      gap .5rem
+      transition width .3s
+
+    +maxWidth768()
+      padding 0 1rem
 
   if hexo-config('index_post_list.direction') == "column" && hexo-config('index_post_list.column') == 2
     #recent-posts
@@ -249,23 +239,9 @@ if hexo-config('index_post_list.direction') == "column"
           flex 1 1 33.3%
           max-width 32.6%
           box-shadow var(--efu-shadow-border)
-      
+
 else if hexo-config('index_post_list.direction') == "row"
-  #recent-posts
-    position relative
-    display flex
-    flex-wrap wrap
-    justify-content space-between
-    align-items flex-start
-    align-content flex-start
-    user-select none
-    gap .5rem
-    transition width .3s
-
-    +maxWidth768()
-      padding 0 1rem
-
-    > .recent-post-item
+  .recent-post-item
       display flex
       align-items center
       animation slide-in .6s .4s backwards
@@ -279,6 +255,8 @@ else if hexo-config('index_post_list.direction') == "row"
       flex-direction row
       width 100%
       box-shadow var(--efu-shadow-border)
+      #tag &:first-child
+          margin-top: 2.5rem
 
       +maxWidth768()
         border-radius 12px
@@ -340,29 +318,20 @@ else if hexo-config('index_post_list.direction') == "row"
             border-radius: 12px 12px 0 0
 
       > .recent-post-info
-        height 174px
+        height 100%
         width 100%
+        padding 18px 32px 18px 32px
         cursor pointer
         position relative
-        padding 0
-        display inline-block
+        display flex
         overflow hidden
+        flex-direction column
+        gap 16px
+        justify-content space-between
+        +minWidth1300()
+          min-height 165px
         +maxWidth768()
           order 2
-
-        .content
-          -webkit-line-clamp 3
-          display -webkit-box
-          overflow hidden
-          -webkit-box-orient vertical
-          padding 5px 32px
-          opacity .8
-          font-size 14px
-          line-height 1.8
-          +maxWidth768()
-            -webkit-line-clamp 2
-          +maxWidth600()
-            -webkit-line-clamp 1
 
         span.tags-punctuation
           transition .3s
@@ -373,7 +342,6 @@ else if hexo-config('index_post_list.direction') == "row"
         .recent-post-info-top
           position relative
           transition .3s
-          padding 0 32px
           width 100%
 
           .article-title
@@ -425,8 +393,10 @@ else if hexo-config('index_post_list.direction') == "row"
                 color var(--efu-card-bg)
 
         /.article-meta-wrap
-          position absolute
-          bottom 0
+          color var(--efu-fontcolor)
+          font-size .7rem
+          user-select none
+          position relative
           transition .3s
           display flex
           flex-direction row
@@ -434,10 +404,7 @@ else if hexo-config('index_post_list.direction') == "row"
           justify-content space-between
           width 100%
           left 0
-          padding 0 32px
           white-space nowrap
-          color var(--efu-fontcolor)
-          font-size .7rem
           +maxWidth768()
             bottom 16px
 
@@ -474,3 +441,16 @@ else if hexo-config('index_post_list.direction') == "row"
 
           .sticky
             color var(--efu-fontcolor)
+  #recent-posts
+    position relative
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    align-items flex-start
+    align-content flex-start
+    user-select none
+    gap .5rem
+    transition width .3s
+
+    +maxWidth768()
+      padding 0 1rem

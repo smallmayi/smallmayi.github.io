@@ -44,6 +44,11 @@ hexo.extend.filter.register('before_generate', () => {
             file: 'js/covercolor/api.js',
             version
         },
+        cover_ave: {
+            name: 'hexo-theme-solitude',
+            file: 'js/covercolor/ave.js',
+            version
+        },
         music_js: {
             name: 'hexo-theme-solitude',
             file: 'js/music.js',
@@ -59,9 +64,9 @@ hexo.extend.filter.register('before_generate', () => {
             file: 'js/tw_cn.js',
             version
         },
-        efu_ai: {
+        post_ai: {
             name: 'hexo-theme-solitude',
-            file: 'js/third_party/efu_ai.min.js',
+            file: 'js/third_party/post_ai.min.js',
             version
         },
         commentBarrage: {
@@ -137,6 +142,6 @@ hexo.extend.filter.register('before_generate', () => {
     themeConfig.cdn = Object.assign(
         createCDNLink(internalSrc, CDN.internal, 'internal'),
         createCDNLink(thirdPartySrc, CDN.third_party),
-        deleteNullValue(CDN.option)
+        deleteNullValue(CDN.options)
     )
 })

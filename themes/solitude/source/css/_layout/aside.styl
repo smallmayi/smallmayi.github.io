@@ -1,18 +1,20 @@
 #aside-content
-  width 300px
+  +minWidth1200()
+    width 300px
   if hexo-config('aside.position') == 0
     order 1
   else
     order 2
 
-  +minWidth900()
+  +minWidth1200()
     if hexo-config('aside.position') == 0
       padding-right 15px
     else
       padding-left 15px
 
-  +maxWidth1200()
-    display none
+  +maxWidth1199()
+    .card-widget:not(#card-toc)
+      display: none
 
   +minWidth1300()
     animation slide-in .6s .3s backwards
@@ -62,6 +64,7 @@
   .sticky_layout
     top calc(60px + .5rem)
     position sticky
+    z-index 10
     transition: top .3s ease 0s
 
   #author-info__sayhi
@@ -81,7 +84,7 @@
 
     / [data-theme=dark] &
       background #00000015
-      color var(--efu-black)
+      color var(--efu-white)
 
       &:hover
         color var(--efu-white)
@@ -177,9 +180,30 @@
         color #fff
 
   #card-toc
+    &:hover
+      .toc-content
+        .toc-link:not(.active) span
+          if hexo-config('aside.toc.vague')
+            filter: blur(0)
+          opacity: 1
     +minWidth901()
       right 0
       padding .5rem
+
+    +maxWidth1200()
+        position: fixed
+        right: 3rem
+        bottom: 10px
+        z-index: 100
+        max-width: 380px
+        max-height: calc(100% - 60px)
+        width: calc(100% - 80px)
+        transition: transform .3s
+        transform: scale(0)
+        transform-origin: right bottom
+
+        &.open
+          transform: scale(1)
 
     .toc-content
       overflow-y: auto
@@ -212,28 +236,20 @@
       .toc-item.active > .toc-child
         display block
 
-      &:hover
-      .toc-content
-        .toc-link:not(.active) span
-          if hexo-config('aside.toc.vague')
-            filter: blur(0)
-          opacity: 1
-
       .toc-item.active .toc-link
         opacity 1
         border-radius 8px
 
       .toc-link
+        transition all .2s ease-in-out 0s
         line-height 24px
         padding 8px
-        border-left 0 solid transparent
         border-radius 12px
         color var(--efu-secondtext)
-        cursor default
         min-height 40px
         display flex
         align-items center
-        transition all .2s ease-in-out 0s
+        cursor pointer
 
         &.active
           border-radius 12px
@@ -243,15 +259,15 @@
           font-weight 700
           font-size 20px
 
+        &:hover
+          background-color var(--efu-main-op-light)
+
         &:not(.active) span
           opacity .6
           cursor pointer
           if hexo-config('aside.toc.vague')
             filter blur(1px)
           transition .3s
-
-          &:hover
-            color var(--efu-lighttext)
 
 [data-theme=dark]
   .toc
@@ -746,32 +762,6 @@ if hexo-config('aside.card.style') == 2
     border var(--style-border-always)
 
 #aside-content
-  .card-webinfo
-    .webinfo
-      .webinfo-item-title
-        display flex
-
-        i
-          line-height: 2 !important
-          margin-right: 6px
-          width: 16px
-          text-align: center
-          font-size: 16px !important
-
-      .webinfo-item
-        display flex
-        justify-content space-between
-        white-space nowrap
-        -webkit-box-align center
-        align-items center
-        padding .1rem .5rem 0
-
-        div:first-child
-          -webkit-box-flex 1
-          flex 1 1 0
-          padding-right 1rem
-
-
   .card-allinfo
 
     hr
@@ -962,14 +952,15 @@ if hexo-config('aside.card.style') == 2
           flex-direction column
 
           .title
+            display -webkit-box
+            -webkit-box-orient vertical
             font-weight 700
-            padding 2px 0
-            margin-bottom 8px
-            color var(--efu-fontcolor)
+            margin 4px 0
             font-size 95%
             line-height 1.3
             -webkit-line-clamp 2
             overflow hidden
+            text-overflow ellipsis
 
           .article-recent_post_categories
             font-size 12px
@@ -1049,14 +1040,16 @@ backcolor = convert(hexo-config('aside.flip.backcolor'))
   .card-widget.card-adsense
     padding 0
 
-if hexo-config('aside.newest_comment.enable')
+if hexo-config('comment.newest_comment.enable')
   .card-recent-comment
     .recent-comment-more
       margin-left auto
       margin-right .5rem
+
       &:hover
         color var(--efu-lighttext)
         transition .3s
+
     .aside-list-item
       padding: .5rem
       width: 100%
@@ -1065,8 +1058,9 @@ if hexo-config('aside.newest_comment.enable')
       height: 80px
       transition: .3s
       position: relative
+
       &:not(:last-child)
-        border-bottom 1px dashed rgba(255, 255, 255, .1)
+        border-bottom var(--style-border-dashed)
 
       .thumbnail img
         width: 60px
@@ -1087,6 +1081,7 @@ if hexo-config('aside.newest_comment.enable')
           transition .3s
           -webkit-box-orient vertical
           cursor pointer
+
           &:hover
             color var(--efu-lighttext)
             transition .3s
@@ -1095,3 +1090,27 @@ if hexo-config('aside.newest_comment.enable')
           font-size 12px
           color var(--efu-secondtext)
           margin-top auto
+
+.webinfo-item
+  display flex
+  justify-content space-between
+  white-space nowrap
+  -webkit-box-align center
+  align-items center
+  padding .1rem .5rem 0
+
+  div:first-child
+    -webkit-box-flex 1
+    flex 1 1 0
+    padding-right 1rem
+
+.webinfo
+  .webinfo-item-title
+    display flex
+
+    i
+      line-height: 2
+      margin-right: 6px
+      width: 16px
+      text-align: center
+      font-size: 16px

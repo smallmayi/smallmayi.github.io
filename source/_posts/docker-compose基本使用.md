@@ -1,3 +1,10 @@
+---
+title: docker-compose基本使用
+date: 2024-12-04
+tags: [docker]
+categories: 软件工具
+cover: 
+---
 ### docker compose 使用
 
 #### 查看是否安装
