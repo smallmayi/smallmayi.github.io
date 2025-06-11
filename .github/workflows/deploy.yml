@@ -3,14 +3,18 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - source  # 触发分支
+      - source
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3  # 使用 v3 版本
+        with:
+          submodules: false
+          fetch-depth: 0  # 获取完整 Git 历史
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -18,20 +22,32 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: |
-          npm install
-          npm install hexo-cli -g
-          npm install hexo-deployer-git --save
+        run: npm install
 
-      - name: Generate Static Files
+      - name: Install Hexo Git Deployer
+        run: |
+          npm install hexo-deployer-git --save
+          npm install hexo-cli -g
+          npm install hexo-renderer-pug hexo-renderer-stylus --save
+
+      - name: Clean and Generate Static Files
         run: |
           hexo clean
           hexo generate
 
-      - name: Deploy
-        env:
-          GH_TOKEN: ${{ secrets.BLOGAUTO }}  # Token 需有 repo 权限
+      - name: Configure Git
         run: |
-          git config --global user.name "smallmayi"
-          git config --global user.email "1591698916@qq.com"
-          hexo deploy
+          git config --global user.name 'smallmayi'
+          git config --global user.email '1591698916@qq.com'
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.BLOGAUTO }}
+        run: |
+          cd public
+          git init
+          git checkout -b main  # 明确切换到 main 分支
+          git add -A
+          git commit -m "update by workflows"
+          git remote add origin https://${{ secrets.BLOGAUTO }}@github.com/smallmayi/smallmayi.github.io.git
+          git push -u origin main -f
