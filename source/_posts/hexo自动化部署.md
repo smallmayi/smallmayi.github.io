@@ -80,59 +80,6 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - source  # 当推送到 source 分支时触发
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: false  # 禁用子模块检查
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Install Hexo Git Deployer
-        run: |
-          npm install hexo-deployer-git --save
-          npm install hexo-cli -g
-          npm install hexo-renderer-pug hexo-renderer-stylus --save
-      - name: Clean and Generate Static Files
-        run: |
-          hexo clean
-          hexo generate
-      - name: Configure Git
-        run: |
-          git config --global user.name 'smallmayi'
-          git config --global user.email '1591698916@qq.com'
-      - name: Deploy to GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.BLOGAUTO }}
-        run: |
-          cd public/
-          git init
-          git add -A
-          git commit -m "update by workflows"
-          git remote add origin https://${{ secrets.BLOGAUTO }}@github.com/smallmayi/smallmayi.github.io.git
-          git push origin HEAD:main -f
-```
-
-//上面会生成新的分支
-
-```
-name: Deploy Hexo to GitHub Pages
-
-on:
-  push:
-    branches:
       - source
 
 jobs:
@@ -174,8 +121,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.BLOGAUTO }}
         run: |
-          # 直接使用 hexo-deployer-git 部署
-          hexo deploy
+          cd public
+          git init
+          git checkout -b main  # 明确切换到 main 分支
+          git add -A
+          git commit -m "update by workflows"
+          git remote add origin https://${{ secrets.BLOGAUTO }}@github.com/smallmayi/smallmayi.github.io.git
+          git push -u origin main -f
 ```
 
 现在就配置好了，后续只需要在`_post`添加文章上传就行，会自动部署生成文件。

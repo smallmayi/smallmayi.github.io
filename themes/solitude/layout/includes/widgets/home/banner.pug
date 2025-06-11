@@ -1,8 +1,14 @@
-- const { title, url, icon} = theme.hometop.banner
+- const { title, desc, icon} = theme.hometop.banner
 
 div.banners-title
     div.banners-title-big!= title
-    div.banners-title-small= url
+    if typeof(desc) === 'object'
+        div.banners-title-small
+        script.
+            var home_subtitle = !{JSON.stringify(desc || [])};
+    else
+        div.banners-title-small= desc
+
 - var group = theme.hometop.group
 if group
     div.banners-links
@@ -23,4 +29,7 @@ if icon
                     .tags-group-icon-pair
                         each key in pair
                             .tags-group-icon(style=`background: ${icon[key].color}`)
-                                img.nolazyload(src=icon[key].img, title=key)
+                                if icon[key].img
+                                    img.nolazyload(src=icon[key].img, title=key)
+                                else if icon[key].icon
+                                    i(class=icon[key].icon, style=`color: ${icon[key].icon_color ? icon[key].icon_color : ''}`)

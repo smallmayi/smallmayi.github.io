@@ -22,7 +22,7 @@
         }
     }
 
-    const sayhello2 = theme.aside?.card?.sayhello2?.map(item => `"${item}"`) || [];
+    const witty_words = theme.aside?.my_card?.witty_words?.map(item => `"${item}"`) || [];
     const [hello_prefix, hello_back] = [_p('aside.hello'), _p('aside.back')];
 
     let comment = false
@@ -32,16 +32,6 @@
             avatar: theme.comment.avatar,
             commentBarrage: theme.comment.commentBarrage,
         }
-    }
-
-    let post_ai = false
-
-    if (theme.post_ai.enable) {
-        post_ai = JSON.stringify({
-            key: theme.post_ai.key,
-            talk: theme.post_ai.talk,
-            randomPost: theme.post_ai.randomPost,
-        })
     }
 
     let copyright = false;
@@ -173,15 +163,15 @@ script.
         randomlink: !{theme.footer.randomlink},
         lang: !{JSON.stringify(lang)},
         aside: {
-            sayhello: {
-                morning: "!{theme.aside.card.sayhello.morning}",
-                noon: "!{theme.aside.card.sayhello.noon}",
-                afternoon: "!{theme.aside.card.sayhello.afternoon}",
-                night: "!{theme.aside.card.sayhello.night}",
-                goodnight: "!{theme.aside.card.sayhello.goodnight}",
+            state: {
+                morning: "!{theme.aside.my_card.state.morning}",
+                noon: "!{theme.aside.my_card.state.noon}",
+                afternoon: "!{theme.aside.my_card.state.afternoon}",
+                night: "!{theme.aside.my_card.state.night}",
+                goodnight: "!{theme.aside.my_card.state.goodnight}",
             },
-            sayhello2: [!{sayhello2}],
-            sayhello3: {
+            witty_words: [!{witty_words}],
+            witty_comment: {
                 prefix: '!{hello_prefix}',
                 back: '!{hello_back}',
             },
@@ -191,7 +181,6 @@ script.
         },
         comment: !{comment ? JSON.stringify(comment) : false},
         lightbox: '!{ theme.mediumZoom ? "mediumZoom" : (theme.fancybox ? "fancybox" : "null")}',
-        post_ai: !{post_ai},
         right_menu: !{rightMenu ? JSON.stringify(rightMenu) : false},
         translate: !{translate ? JSON.stringify(translate) : false},
         lure: !{lure ? JSON.stringify(lure) : false},
