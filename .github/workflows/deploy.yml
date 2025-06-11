@@ -28,7 +28,7 @@ jobs:
         run: |
           npm install hexo-deployer-git --save
           npm install hexo-cli -g
-          npm install hexo-renderer-pug hexo-renderer-stylus --save
+        #  npm install hexo-renderer-pug hexo-renderer-stylus --save
 
       - name: Clean and Generate Static Files
         run: |
