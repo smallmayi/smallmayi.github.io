@@ -1,0 +1,3 @@
+var posts=["2024/07/15/Linux 服务器之间传输文件/","2024/07/15/Linux定时备份/","2024/07/15/centos安装字体/","2024/12/03/docker-compose基本使用/","2024/07/12/docker仓库配置/","2024/07/11/hello-world/","2024/07/12/hexo自动化部署/","2025/06/11/hexo配置搜索/","2024/07/12/utools破解/","2024/07/12/天翼云盘签到脚本/","2024/07/12/手机安装面具/","2024/07/12/米游社自动签到/","2024/07/12/油猴脚本编写和发布/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };
