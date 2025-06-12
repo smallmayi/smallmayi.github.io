@@ -1,6 +1,8 @@
 ---
 title: hexo自动化部署
 date: 2024-07-12 12:00:00
+tags: [hexo]
+categories: blog
 ---
 
 前面我们通过`hexo d`只是将生成的静态文件推送到我们指定的分支，但是我们的源码该如何管理。
