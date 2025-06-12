@@ -167,7 +167,7 @@ cover:
 # Replace Broken Images (替换无法显示的图片)
 error_img:
   flink: /img/friend_404.gif
-  post_page: /img/404.jpg
+  post_page: /img/404.jpghttp://localhost:4000/2024/07/12/%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85%E9%9D%A2%E5%85%B7/
 
 # A simple 404 page
 error_404:
@@ -201,7 +201,7 @@ mainTone:
 # wordcount (字数统计)
 # see https://blog.anheyu.com/posts/c27d.html#字数统计
 wordcount:
-  enable: false
+  enable: true
   post_wordcount: true
   min2read: true
   total_wordcount: true
@@ -234,7 +234,7 @@ post_copyright:
   enable: true
   decode: false
   author_href:
-  location: 长沙
+  location: 深圳
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
   avatarSinks: false # hover时头像下沉
@@ -299,7 +299,7 @@ noticeOutdate:
 # Share.js
 # https://github.com/overtrue/share.js
 sharejs:
-  enable: true
+  enable: false
   sites: facebook,twitter,wechat,weibo,qq
 
 # AddToAny
@@ -812,10 +812,10 @@ aside:
     name_link: /
 
   card_announcement:
-    enable: false
+    enable: true
     content: 欢迎来看我的博客鸭~
   card_weixin:
-    enable: true
+    enable: false
     face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
     backFace: https://bu.dusays.com/2023/05/13/645fa415e8694.png
   card_recent_post:
@@ -1145,41 +1145,41 @@ visitorMail:
 # ptool 文章底部工具
 ptool:
   enable: true
-  share_mobile: true
-  share_weibo: true
+  share_mobile: false
+  share_weibo: false
   share_copyurl: true
-  categories: false # 是否显示分类
+  categories: true # 是否显示分类
   mode: # 运营模式与责任，不配置不显示
 
 # 欢迎语配置
 greetingBox:
-  enable: false #开启后必须配置下面的list对应的时间段，不然会出现小白条
+  enable: true #开启后必须配置下面的list对应的时间段，不然会出现小白条
   default: 晚上好👋
   list:
-    # - greeting: 晚安😴
-    #   startTime: 0
-    #   endTime: 5
-    # - greeting: 早上好鸭👋, 祝你一天好心情！
-    #   startTime: 6
-    #   endTime: 9
-    # - greeting: 上午好👋, 状态很好，鼓励一下～
-    #   startTime: 10
-    #   endTime: 10
-    # - greeting: 11点多啦, 在坚持一下就吃饭啦～
-    #   startTime: 11
-    #   endTime: 11
-    # - greeting: 午安👋, 宝贝
-    #   startTime: 12
-    #   endTime: 14
-    # - greeting: 🌈充实的一天辛苦啦！
-    #   startTime: 14
-    #   endTime: 18
-    # - greeting: 19点喽, 奖励一顿丰盛的大餐吧🍔。
-    #   startTime: 19
-    #   endTime: 19
-    # - greeting: 晚上好👋, 在属于自己的时间好好放松😌~
-    #   startTime: 20
-    #   endTime: 24
+     - greeting: 晚安😴
+       startTime: 0
+       endTime: 5
+     - greeting: 早上好鸭👋, 祝你一天好心情！
+       startTime: 6
+       endTime: 9
+     - greeting: 上午好👋, 状态很好，鼓励一下～
+       startTime: 10
+       endTime: 10
+     - greeting: 11点多啦, 在坚持一下就吃饭啦～
+       startTime: 11
+       endTime: 11
+     - greeting: 午安👋, 宝贝
+       startTime: 12
+       endTime: 14
+     - greeting: 🌈充实的一天辛苦啦！
+       startTime: 14
+       endTime: 18
+     - greeting: 19点喽, 奖励一顿丰盛的大餐吧🍔。
+       startTime: 19
+       endTime: 19
+     - greeting: 晚上好👋, 在属于自己的时间好好放松😌~
+       startTime: 20
+       endTime: 24
 
 # 文章顶部ai摘要
 post_head_ai_description:
