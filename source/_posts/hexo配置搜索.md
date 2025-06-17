@@ -1,5 +1,5 @@
 ---
-title: hexo
+title: hexo 配置Alogolia docsearch搜索
 date: 2025-06-12
 tags: [hexo]
 categories: blog
@@ -16,3 +16,4 @@ categories: blog
 
 #### 2.信息
 
+	将邮件内响应信息填入配置
