@@ -30,6 +30,8 @@ jobs:
           npm install hexo-cli -g
           npm install hexo-renderer-pug hexo-renderer-stylus --save
           npm install hexo-wordcount --save
+          npm install @docsearch/js@3
+		
 
       - name: Clean and Generate Static Files
         run: |
