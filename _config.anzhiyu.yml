@@ -102,10 +102,10 @@ algolia_search:
 # Crawler Admin Console: see https://crawler.algolia.com/
 # Settings: https://www.algolia.com/
 docsearch:
-  enable: false
-  appId: # see email
-  apiKey: # see email
-  indexName: # see email
+  enable: true
+  appId: LHXAJSTT97 # see email
+  apiKey: 320d69b709e405c0e6dd9927c801ab07 # see email
+  indexName: smallmayi # see email
   option:
 
 # Local search
