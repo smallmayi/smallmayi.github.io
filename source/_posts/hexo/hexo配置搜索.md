@@ -10,7 +10,7 @@ categories: blog
 
 网址：https://docsearch.algolia.com/apply/
 
-![image-20250612153525647](../images/image-20250612153525647.png)
+![image-20250612153525647](../../images/image-20250612153525647.png)
 
 无需注册，填写信息申请，之后会定时抓取网站信息更新索引
 
