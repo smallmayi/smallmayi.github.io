@@ -1,3 +1,7 @@
+title: hexo流程
+date: 2025-06-17
+tags: [hexo]
+
 ## hexo流程
 
 1.搭建hexo环境，添加主题

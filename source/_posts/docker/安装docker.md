@@ -1,3 +1,7 @@
+title: 安裝docker
+date: 2025-06-17
+tags: [docker]
+
 1.安裝docker
 
 安装所需依赖包

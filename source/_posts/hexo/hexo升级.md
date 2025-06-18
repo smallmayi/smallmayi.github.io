@@ -1,3 +1,7 @@
+title: hexo升级
+date: 2025-06-17
+tags: [hexo]
+
 ## hexo升级
 
 之前安装过hexo,启动主题时提示

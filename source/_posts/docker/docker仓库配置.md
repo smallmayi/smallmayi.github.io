@@ -1,8 +1,8 @@
 ---
 title: docker可用镜像源
 date: 2024-07-12 10:00:00
-tags: [服务器]
-categories: 软件工具
+tags: [docker]
+categories: 容器
 cover: 
 ---
 由于某些原因，docker仓库已无法直接访问。

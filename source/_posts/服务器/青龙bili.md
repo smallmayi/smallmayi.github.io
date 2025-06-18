@@ -1,4 +1,8 @@
-## 轻量服务器----青龙面板之bilibili
+title: 青龙面板 哔哩哔哩
+date: 2025-06-17
+tags: [青龙]
+
+## 青龙面板 bilibili
 
 ####　1. 安装 `dotnet` 环境
 

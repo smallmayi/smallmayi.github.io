@@ -1,3 +1,7 @@
+title: linux扩容
+date: 2025-06-17
+tags: [linux]
+
 ## /dev/mapper/centos-root 扩容
 
 出现问题空间不足

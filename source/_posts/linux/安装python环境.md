@@ -1,3 +1,7 @@
+title: linux 安装python
+date: 2025-06-17
+tags: [linux]
+
 ##　linux 安装python
 
 查看linux版本

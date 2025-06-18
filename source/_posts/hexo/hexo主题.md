@@ -1,3 +1,7 @@
+title: hexo主题
+date: 2025-06-17
+tags: [hexo]
+
 使用了anzhiyu主题
 
 地址：https://github.com/anzhiyu-c/hexo-theme-anzhiyu

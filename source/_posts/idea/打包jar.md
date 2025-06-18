@@ -1,3 +1,7 @@
+title: IDEA 打包jar
+date: 2025-06-17
+tags: [idea]
+
 ## IDEA 打包jar
 
 *使用版本idea2023.3.1*

@@ -1,3 +1,7 @@
+title: firewalld防火墙和端口暴露
+date: 2025-06-17
+tags: [linux]
+
 firewalld防火墙和端口暴露
 
 ### [firewall](https://so.csdn.net/so/search?q=firewall&spm=1001.2101.3001.7020)防火墙
