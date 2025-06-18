@@ -1,4 +1,9 @@
-miui - 解BL锁开启root权限
+title: miui解锁
+date: 2024-07-12 10:00:00
+tags: [miui]
+categories: 软件工具
+
+## miui - 解BL锁开启root权限
 
 ###　解BL锁
 
