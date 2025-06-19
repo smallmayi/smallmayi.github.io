@@ -73,7 +73,8 @@ social:
 author_status:
   enable: false
   # 可以是任何图片，建议放表情包或者emoji图片，效果都很好，[表情包速查](https://emotion.xiaokang.me/)
-  statusImg: "https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png"
+  #statusImg: "https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png"
+  statusImg: /img/tou.jpg
   skills:
     # - 🤖️ 数码科技爱好者
     # - 🔍 分享与热心帮助
@@ -140,7 +141,8 @@ favicon: /img/logo.gif
 
 # Avatar (头像)
 avatar:
-  img: https://bu.dusays.com/2023/04/27/64496e511b09c.jpg
+  #img: https://bu.dusays.com/2023/04/27/64496e511b09c.jpg
+  img: /img/tou.jpg
   effect: false
 
 # Disable all banner image
@@ -167,7 +169,7 @@ cover:
 # Replace Broken Images (替换无法显示的图片)
 error_img:
   flink: /img/friend_404.gif
-  post_page: /img/404.jpghttp://localhost:4000/2024/07/12/%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85%E9%9D%A2%E5%85%B7/
+  post_page: /img/404.jpg
 
 # A simple 404 page
 error_404:
@@ -427,7 +429,7 @@ crisp:
 footer:
   owner:
     enable: true
-    since: 2020
+    since: 2025
   custom_text:
   runtime:
     enable: false
