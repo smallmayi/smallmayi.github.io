@@ -103,28 +103,19 @@ vi /etc/docker/daemon.json
 
 ```
 {
-	"registry-mirrors": [
-		"https://docker.registry.cyou",
-		"https://docker-cf.registry.cyou",
-		"https://dockercf.jsdelivr.fyi",
-		"https://docker.jsdelivr.fyi",
-		"https://dockertest.jsdelivr.fyi",
-		"https://mirror.aliyuncs.com",
-		"https://dockerproxy.com",
-		"https://mirror.baidubce.com",
-		"https://docker.m.daocloud.io",
-		"https://docker.nju.edu.cn",
-		"https://docker.mirrors.sjtug.sjtu.edu.cn",
-		"https://docker.mirrors.ustc.edu.cn",
-		"https://mirror.iscas.ac.cn",
-		"https://docker.rainbond.cc"
-	]
+    "registry-mirrors": [
+        "https://docker.m.daocloud.io",
+        "https://docker.imgdb.de",
+        "https://docker-0.unsee.tech",
+        "https://docker.hlmirror.com"
+    ]
 }
 ```
 
 修改完后重启就可以了
 
-```
+```bash
+systemctl daemon-reload
 systemctl restart docker
 ```
 
@@ -203,4 +194,6 @@ always：如果容器停止，请务必重启容器。如果手动停止，则�
 
 unless-stopped：类似于always，除了当容器停止（手动或其他方式）时，即使在Docker守护程序重新启动后也不会重新启动容器。
 ```
+
+
 
