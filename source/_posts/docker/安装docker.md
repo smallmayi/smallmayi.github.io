@@ -1,127 +1,206 @@
-title: 安裝docker
+title: docker安装
 date: 2025-06-17
 tags: [docker]
 
-1.安裝docker
+## docker安装
 
-安装所需依赖包
+*使用环境：CentOS7*
 
-yum install -y yum-utils device-mapper-persistent-data lvm2
-配置国内源
+> Docker 要求CentOS系统内核版本高于3.10
 
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-查看所有可选的docker版本
+命令查看内核版本
 
-yum list docker-ce --showduplicates | sort -r
+```
+uname -r  # 当前版本 3.10.0-1160.el7.x86_64
+```
 
+[官方文档](https://docs.docker.com/engine/install/centos/)
+
+### 一.在线安装
+
+#### 1.更新 `yum`包
+
+```shell
+yum update
+```
+
+#### 2.卸载旧版`docker`(有的话)
+
+```shell
+yum remove docker \
+            docker-client \
+            docker-client-latest \
+            docker-common \
+            docker-latest \
+            docker-latest-logrotate \
+            docker-logrotate \
+            docker-engine-selinux \
+            docker-engine \
+            docker-ce
+```
+
+#### 3.安装所需依赖
+
+```
+yum -y install yum-utils device-mapper-persistent-data lvm2
+```
+
+#### 4. 指定 Docker 镜像源，使用阿里云加速
+
+```
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+```
+
+####  5.安装`Docker`
+
+```shell
 yum -y install docker-ce
-
-centos7默认的是docker-io 1.13，比较早的版本
-
--ce 是新的社区版
-
-查看docker 版本 docker --version
-
-2.安裝gogs
-
-一款极易搭建的自助git服务。 轻量级
-
-安装
-
- 下载镜像 docker pull gogs/gogs
-
- 运行容器 docker run -d --name=gogs  --restart always  -p 8031:3000 -p 8032:22 -v /docker/gogs:/data gogs/gogs
-
-
-
-![安装页面 - Gogs](C:\Users\dengsm\Desktop\安装页面 - Gogs.png)
-
-安装mysql
-
-docker pull mysql:5.7
-
- docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
-
-docker exec -it mysql bash
-
-安装gogs,配置mysql 
-
- 不创建用户的就默认第一个注册为管理员。
-
-安装drone  https://docs.drone.io/
-
-drone分为两部分：server 和runners
-
-server:Drone主服务，它是一个守护进程应用并且拥有Web管理界面。它通过Webhook对接Git Server。
-
-runner: Drone Pipeline处理执行器.
-
-docker pull drone/drone
-
-docker run --name=common-drone 
-  --volume=/home/var/lib/drone/data:/data 
-  -e DRONE_AGENTS_ENABLED=true
-  -e DRONE_GOGS_SERVER=http://1.117.82.16:8031
-  -e DRONE_RPC_SECRET=drone666
-  -e DRONE_SERVER_HOST=1.117.82.16:10080
-  -e DRONE_SERVER_PROTO=http 
-  -e TZ="Asia/Shanghai"
-  -p 3080:80 
-  --detach=true --restart=always 
-  drone/drone
-
-docker pull drone/drone-runner-docker
-
-docker run -d --name common-drone-runner 
-  -v /var/run/docker.sock:/var/run/docker.sock 
-  -e DRONE_RPC_PROTO=http 
-  -e DRONE_RPC_HOST=1.117.82.16:10080 
-  -e DRONE_RPC_SECRET=drone666
-  -e DRONE_RUNNER_CAPACITY=2 
-  -e DRONE_RUNNER_NAME=common-drone-runner 
-  -p 3000:3000 
-  --restart always 
-  drone/drone-runner-docker
-
-.drone.yml  和 Dockerfile 编写
-
-创建本地仓库
-
-docker pull registory
-
-运行命令
-docker run --name registry -d 
--p 5000:5000 --restart=always 
--v /opt/data/registry:/var/lib/registry 
-registry
-
-命令解释
---name registry:表示容器运行时的名字为registry
--d:表示后台运行
--p 5000:5000:表示将宿主机的5000端口映射到容器的5000端口
--v /opt/data/registry:/var/lib/registry：表示宿主机/opt/data/registry目录映射到容器/var/lib/registry的目录
-
-执行
-\#curl http://127.0.0.1:5000/v2/_catalog
-返回
-{“repositories”:[]}
-
-仓库可视化（忽略）
-
-```
-docker pull hyper/docker-registry-web
 ```
 
+安装docker可能出现如下问题
+
 ```
-docker run -d -p 8080:8080 --name registry-web --link registry 
--e REGISTRY_URL=http://1.117.82.16:5000/v2 
--e REGISTRY_TRUST_ANY_SSL=true 
--e REGISTRY_BASIC_AUTH="YWRtaW46YWRtaW4=" 
--e REGISTRY_NAME=1.117.82.16:5000
-hyper/docker-registry-web
+ Error: Package: containerd.io-1.6.33-3.1.el7.x86_64 (docker-ce-stable)
+           Requires: container-selinux >= 2:2.74
+Error: Package: docker-ce-rootless-extras-26.1.4-1.el7.x86_64 (docker-ce-stable)
+           Requires: slirp4netns >= 0.4
+Error: Package: 3:docker-ce-26.1.4-1.el7.x86_64 (docker-ce-stable)
+           Requires: container-selinux >= 2:2.74
+Error: Package: docker-ce-rootless-extras-26.1.4-1.el7.x86_64 (docker-ce-stable)
+           Requires: fuse-overlayfs >= 0.7
+ You could try using --skip-broken to work around the problem
+ You could try running: rpm -Va --nofiles --nodigest
+```
+
+**解决办法：**
+
+```yacas
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+ 
+yum clean all
+yum makecache
+```
+
+#### 6.启动`Docker`
+
+```shell
+docker -v #查看版本
+systemctl start docker #启动
+systemctl enable docker #开机自动启动
+docker run hello-world
+```
+
+出现如下错误
+
+```
+Unable to find image 'hello-world:latest' locally
+docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": dial tcp 65.49.26.98:443: i/o timeout.
+```
+
+**解决办法**
+
+vi /etc/docker/daemon.json
+
+```
+{
+	"registry-mirrors": [
+		"https://docker.registry.cyou",
+		"https://docker-cf.registry.cyou",
+		"https://dockercf.jsdelivr.fyi",
+		"https://docker.jsdelivr.fyi",
+		"https://dockertest.jsdelivr.fyi",
+		"https://mirror.aliyuncs.com",
+		"https://dockerproxy.com",
+		"https://mirror.baidubce.com",
+		"https://docker.m.daocloud.io",
+		"https://docker.nju.edu.cn",
+		"https://docker.mirrors.sjtug.sjtu.edu.cn",
+		"https://docker.mirrors.ustc.edu.cn",
+		"https://mirror.iscas.ac.cn",
+		"https://docker.rainbond.cc"
+	]
+}
+```
+
+修改完后重启就可以了
+
+```
+systemctl restart docker
 ```
 
 
 
-docker run -d -v /var/run/docker.sock:/var/run/docker.sock --net docker-mynet --ip 1.117.82.16 -e DRONE_RPC_PROTO=http -e DRONE_RPC_HOST=1.117.82.16:3080 -e DRONE_RPC_SECRET=droner666 -e DRONE_RUNNER_CAPACITY=2 -e DRONE_RUNNER_NAME=runner-docker -e TZ="Asia/Shanghai" -p 3000:3000 --restart always --name runner-docker drone/drone-runner-docker
+#### 卸载docker
+
+```shell
+#停止服务
+
+systemctl stop docker
+
+#卸载yum安装的软件
+
+yum remove docker-ce docker-ce-cli containerd.io
+
+#删除本地文件
+
+rm -rf /var/lib/docker
+rm -rf /var/lib/containerd
+```
+
+
+
+### 二.离线安装
+
+```shell
+#查看centos版本
+cat  /etc/redhat-release
+```
+
+![image-20220930141213519](image-20220930141213519.png)
+
+使用软件包安装，下载合适安装包
+
+下载地址：[https://download.docker.com/linux/centos/](https://download.docker.com/linux/centos/)  `x86_64/stable/Packages/`
+
+
+
+**其他：tag安装**
+
+下载地址：https://download.docker.com/linux/static/stable/x86_64/
+
+安装参考：https://blog.csdn.net/fy512/article/details/123257474
+
+### docker自启
+
+```
+# 开启 docker 自启动
+systemctl enable docker.service
+
+# 关闭 docker 自启动
+systemctl disable docker.service
+```
+
+
+
+### docker容器自启
+
+```shell
+# 开启容器自启动
+docker update --restart=always 【容器名】
+例如：docker update --restart=always tracker
+
+
+# 关闭容器自启动
+docker update --restart=no【容器名】
+例如：docker update --restart=no tracker
+
+##### 相关配置解析
+no：不自动重启容器。（默认）
+
+on-failure： 如果容器由于错误而退出，则重新启动容器，该错误表现为非零退出代码。
+
+always：如果容器停止，请务必重启容器。如果手动停止，则仅在Docker守护程序重新启动或手动重新启动容器本身时才重新启动。（参见重启政策详情中列出的第二个项目）
+
+unless-stopped：类似于always，除了当容器停止（手动或其他方式）时，即使在Docker守护程序重新启动后也不会重新启动容器。
+```
 
