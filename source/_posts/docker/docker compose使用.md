@@ -9,7 +9,7 @@ cover:
 
 Docker 从 **20.10.0+** 开始内置 `docker compose` 插件，不用额外下载
 
-```bash
+```shell
 docker compose version
 ```
 

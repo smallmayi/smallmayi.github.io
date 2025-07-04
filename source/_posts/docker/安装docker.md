@@ -2,6 +2,8 @@ title: docker安装
 date: 2025-06-17
 tags: [docker]
 
+---
+
 ## docker安装
 
 *使用环境：CentOS7*
@@ -10,7 +12,7 @@ tags: [docker]
 
 命令查看内核版本
 
-```
+```shell
 uname -r  # 当前版本 3.10.0-1160.el7.x86_64
 ```
 
@@ -18,67 +20,26 @@ uname -r  # 当前版本 3.10.0-1160.el7.x86_64
 
 ### 一.在线安装
 
-#### 1.更新 `yum`包
+#### 1.安装所需依赖
 
-```shell
-yum update
+```sh
+yum -y install yum-utils
 ```
 
-#### 2.卸载旧版`docker`(有的话)
+#### 2. 指定 Docker 镜像源，使用阿里云加速
 
-```shell
-yum remove docker \
-            docker-client \
-            docker-client-latest \
-            docker-common \
-            docker-latest \
-            docker-latest-logrotate \
-            docker-logrotate \
-            docker-engine-selinux \
-            docker-engine \
-            docker-ce
-```
-
-#### 3.安装所需依赖
-
-```
-yum -y install yum-utils device-mapper-persistent-data lvm2
-```
-
-#### 4. 指定 Docker 镜像源，使用阿里云加速
-
-```
+```sh
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
-####  5.安装`Docker`
+(注：官方存储库地址为 https://download.docker.com/linux/centos/docker-ce.repo)
+
+####  3.安装`Docker`
+
+`yum list docker-ce --showduplicates | sort -r`可以列出可用版本
 
 ```shell
 yum -y install docker-ce
-```
-
-安装docker可能出现如下问题
-
-```
- Error: Package: containerd.io-1.6.33-3.1.el7.x86_64 (docker-ce-stable)
-           Requires: container-selinux >= 2:2.74
-Error: Package: docker-ce-rootless-extras-26.1.4-1.el7.x86_64 (docker-ce-stable)
-           Requires: slirp4netns >= 0.4
-Error: Package: 3:docker-ce-26.1.4-1.el7.x86_64 (docker-ce-stable)
-           Requires: container-selinux >= 2:2.74
-Error: Package: docker-ce-rootless-extras-26.1.4-1.el7.x86_64 (docker-ce-stable)
-           Requires: fuse-overlayfs >= 0.7
- You could try using --skip-broken to work around the problem
- You could try running: rpm -Va --nofiles --nodigest
-```
-
-**解决办法：**
-
-```yacas
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
- 
-yum clean all
-yum makecache
 ```
 
 #### 6.启动`Docker`
@@ -86,7 +47,10 @@ yum makecache
 ```shell
 docker -v #查看版本
 systemctl start docker #启动
+systemctl stop docker #停止
+systemctl status docker #查看 Docker 状态
 systemctl enable docker #开机自动启动
+
 docker run hello-world
 ```
 
@@ -119,56 +83,90 @@ systemctl daemon-reload
 systemctl restart docker
 ```
 
+```shell
+#查看加速器地址
+docker info | grep -A 10 "Registry Mirrors"
+```
+
 
 
 #### 卸载docker
 
 ```shell
-#停止服务
-
+1.#停止服务
 systemctl stop docker
 
-#卸载yum安装的软件
+2.#删除 Docker 二进制文件
+rm -f /usr/bin/docker*
+rm -f /usr/bin/containerd*
+rm -f /usr/bin/runc
 
-yum remove docker-ce docker-ce-cli containerd.io
+3.#删除Docker服务文件
+rm -f /etc/systemd/system/docker.service
+systemctl daemon-reload
 
-#删除本地文件
+4.#删除 Docker 数据目录
+rm -rf /var/lib/docker 
+rm -rf /data/docker  # 如果您自定义了存储目录
 
-rm -rf /var/lib/docker
-rm -rf /var/lib/containerd
+5.#删除其它Docker 配置文件
+rm -rf /etc/docker
+rm -rf /etc/systemd/system/docker.service.d
+rm -rf /var/run/docker
+rm -rf /var/log/docker
+
+6.#验证卸载是否成功
+#检查是否还有残留的 Docker 文件，如果输出为空或显示未找到命令，说明卸载成功。
+which docker
+docker --version
 ```
 
 
 
 ### 二.离线安装
 
+#### 1.下载
+
 ```shell
-#查看centos版本
-cat  /etc/redhat-release
+https://download.docker.com/linux/static/stable/x86_64/
 ```
 
-![image-20220930141213519](image-20220930141213519.png)
+或者
 
-使用软件包安装，下载合适安装包
-
-下载地址：[https://download.docker.com/linux/centos/](https://download.docker.com/linux/centos/)  `x86_64/stable/Packages/`
-
-
-
-**其他：tag安装**
-
-下载地址：https://download.docker.com/linux/static/stable/x86_64/
-
-安装参考：https://blog.csdn.net/fy512/article/details/123257474
-
-### docker自启
-
+```sh
+wget https://download.docker.com/linux/static/stable/x86_64/docker-20.10.26.tgz
 ```
-# 开启 docker 自启动
-systemctl enable docker.service
 
-# 关闭 docker 自启动
-systemctl disable docker.service
+#### 2.安装
+
+```shell
+#1.解压
+tar -xvzf docker-20.10.26.tgz
+#2.移动到系统路径
+cp docker/* /usr/bin/
+#3.创建服务文件
+#为 Docker 创建系统服务文件 /etc/systemd/system/docker.service
+cat > /etc/systemd/system/docker.service <<EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+[Service]
+ExecStart=/usr/bin/dockerd
+ExecReload=/bin/kill -s HUP \$MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+[Install]
+WantedBy=multi-user.target
+EOF
+
+#4.启动 Docker 服务
+systemctl start docker
 ```
 
 
