@@ -49,7 +49,7 @@ docker run \
 -v /home/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
 -v /home/nginx/conf/conf.d:/etc/nginx/conf.d \
 -v /home/nginx/log:/var/log/nginx \
--v /home/nginx/html:/usr/share/nginx/html \
+-v /home/nginx/html:/usr/share/nginx/html \   #关键挂载，项目路径
 -d nginx:latest
 ```
 

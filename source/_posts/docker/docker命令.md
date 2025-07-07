@@ -2,24 +2,11 @@ title: docker命令
 date: 2025-06-17
 tags: [docker]
 
-```
+---
 
-# 启动所有镜像
-docker start $(docker ps -a -q)
- 
-# stop停止所有容器
-docker stop $(docker ps -a -q)
- 
-# remove删除所有容器
-docker rm $(docker ps -a -q) 
- 
-# 删除所有镜像
-docker rmi $(docker images -q)
-```
+### Docker命令
 
-# Docker命令大全
-
-## 基础命令
+#### 基础命令
 
 - 系统信息
 
@@ -29,7 +16,7 @@ docker rmi $(docker images -q)
 
   `docker version`
 
-## `imges`镜像
+#### `imges`镜像
 
 - 拉取镜像
 
@@ -61,7 +48,7 @@ docker rmi $(docker images -q)
   `docker run`
 
 
-## `contaniner`容器
+#### `contaniner`容器
 
 - 查看运行容器
 
@@ -98,6 +85,10 @@ docker rmi $(docker images -q)
 
   ​	`docker rm containerId`    (`containerId`替换成对应容器Id)
 
+- 启用所有容器
+
+  `docker start $(docker ps -a -q)`
+
 - 停用所有运行中容器
 
   `docker stop $(docker ps -q)`
@@ -107,10 +98,3 @@ docker rmi $(docker images -q)
 - 删除所有容器
 
   `docker rm -f $(docker ps -aq)`
-
-
-
-
-
-
-
