@@ -1,9 +1,9 @@
----
 title: docker compose安装和使用
 date: 2024-12-04
 tags: [docker]
 categories: 软件工具
 cover: 
+
 ---
 ### 一、docker  compose 安装
 
